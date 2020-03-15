@@ -14,10 +14,10 @@ session_start();
     <div class="container-primary">
     <header class="fbox">
         <div>
-        <a class="mousechanged" href="/painellogin"><h1 class="title-logo">Principal</h1></a>
+        <a class="mousechanged" href="/sistema-de-login"><h1 class="title-logo">Principal</h1></a>
         </div>
         <nav class="nav respon movel-space">
-            <a class="menu-primary" href="/painellogin">Inico</a>
+            <a class="menu-primary" href="/sistema-de-login">Inico</a>
             <a class="menu-primary" href="#">Sobre</a>
             <a class="menu-primary" href="#">Contato</a>
         </nav>

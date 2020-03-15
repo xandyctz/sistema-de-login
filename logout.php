@@ -2,4 +2,4 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: /painellogin");
+header("Location: /sistema-de-login");
