@@ -1,0 +1,51 @@
+input {
+    display: block;
+    margin: 10px 10px;
+    padding: 20px 20px;
+    font-size: 13pt;
+    width: 100%;
+    border: 2px solid #333;
+    border-radius: 10px 0px 10px 0px;
+    font-family: 'Fira Sans', sans-serif;
+ 
+
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    
+}
+.title-form {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 30pt;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.btn-form {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 20pt;
+    margin-top: 20px;
+    padding: 5px 5px;
+    border: 0;
+    border-bottom: 2px solid #333;
+    border-radius: 10px 0 10px 0;
+    cursor: pointer;
+    width: 100%;
+    transition: box-shadow 0.5s;
+
+}
+.btn-form:hover {
+    box-shadow: 0px 0px 5px 1px #333;
+
+}
+
+.msg-erro {
+    color: #FF2121;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13pt;
+}

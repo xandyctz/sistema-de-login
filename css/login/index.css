@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.container-primary {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.fbox {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 10px;
+    background: #E6E6EA;
+}
+
+.fbox-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    background: #E6E6EA;
+    height: 100vh;
+
+}
+
+.fbox-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    background: #E6E6EA;
+    height: 80px;
+}
+
+.nav .menu-primary {
+    padding: 10px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+}
+.nav .menu-primary:hover {
+    border-bottom: 2px solid #333;
+}
+
+.nav .name-login-register {
+    font-size: 10pt;
+    padding: 10px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+}
+.nav .name-login-register:hover {
+    border-top: 2px solid #333;
+}
+
+
+.title-logo {
+    font-family: 'Source Sans Pro', sans-serif;
+    border: 2px solid #333;
+    padding: 0px 10px 0px 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+}
+.mousechanged {
+    cursor: pointer;
+
+}
+
+@media screen and (max-width: 720px) {
+    .fbox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .movel-space {
+        padding: 20px 20px;
+    }
+}
