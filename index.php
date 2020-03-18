@@ -22,7 +22,7 @@ session_start();
             <a class="menu-primary" href="#">Contato</a>
         </nav>
         <nav class="nav respon">
-            <?php
+        <?php
             if(!empty($_SESSION)):
                 echo '<a class="name-login-register" title="Registrar" href="logout.php">Sair</a>';
             else:

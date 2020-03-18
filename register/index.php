@@ -1,21 +1,31 @@
 <?php
-session_start();
+include('check-register.php');
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+if(!empty($_SESSION['logado'])):
+    header('Location: /sistema-de-login');
+endif;
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Login</title>
+    <title>Painel de Cadastro</title>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/login/index.css">
+    <link rel="stylesheet" href="../css/login/form.css">
 </head>
 <body>
     <div class="container-primary">
     <header class="fbox">
         <div>
         <a class="mousechanged" href="/sistema-de-login"><h1 class="title-logo">Principal</h1></a>
-            
+        
         </div>
         <nav class="nav respon movel-space">
             <a class="menu-primary" href="/sistema-de-login">Inico</a>
@@ -23,11 +33,11 @@ session_start();
             <a class="menu-primary" href="#">Contato</a>
         </nav>
         <nav class="nav respon">
+        <!-- <a class="name-login-register" title="Registrar" href="../logout.php">Sair</a> -->
+
             <?php
             if(!empty($_SESSION)):
                 echo '<a class="name-login-register" title="Registrar" href="logout.php">Sair</a>';
-            else:
-                echo "";
             endif;
             if(empty($_SESSION)):
                 echo '<a class="name-login-register" title="Logar" href="../login/" >Login</a>';
@@ -40,7 +50,21 @@ session_start();
     </header>
 
     <main class="fbox-main">
-        REGISTER
+        <form action="check-register.php" method="POST">
+            <h1 class="title-form">Painel de Cadastro</h1>
+            <input type="text" name="nome" placeholder="Nome" autocomplete="off" maxlength="20">
+            <input type="email" name="email" placeholder="Email" autocomplete="off">
+            <input type="text" name="login" placeholder="Username" autocomplete="off" maxlength="15">
+            <input type="password" name="senha" placeholder="Password" maxlength="20">
+            <?php
+               if(!empty($erros)):
+                foreach($erros as $erro):
+                    echo $erro;
+                endforeach;
+            endif;
+            ?>
+            <button type="submit" name="btn-entrar" class="btn-form">Entrar</button>
+        </form>
     </main>
 
     <footer class="fbox-footer">

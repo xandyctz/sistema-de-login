@@ -1,26 +1,44 @@
 <?php
-session_start();
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$dbName = "principal_login";
+//Conexão
+require_once 'db_connect.php';
+require_once 'index.php';
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 
-$conexao = mysqli_connect($hostname, $username, $password, $dbName);
+// Botao entrar
+if(isset($_POST['btn-entrar'])):
 
-$login = ($_POST['login']);
-$senha = ($_POST['senha']);
+    $erros = array();
+    $login = mysqli_escape_string($conexao, $_POST['login']);
+    $senha = mysqli_escape_string($conexao, $_POST['senha']);
+
+    if(empty($login) or empty($senha)):
+        $erros[] = "<p class='msg-erro'>O campo login/senha precisa ser preenchido</p>";
+    else:
+        $sql = "SELECT login FROM usuarios WHERE login = '$login'";
+        $resultado = mysqli_query($conexao, $sql);
 
 
+        if(mysqli_num_rows($resultado) > 0):
+            // $senha = md5($senha);
+            $sql = "SELECT * FROM usuarios WHERE login = '$login' AND senha = MD5('$senha')";
+            $resultado = mysqli_query($conexao, $sql);
+            
 
-if (!$conexao):
-    echo "Error: Unable to connect to MySQL." . PHP_EOL;
-    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-    exit;
-else:
+            if(mysqli_num_rows($resultado) == 1):
+                $dados = mysqli_fetch_array($resultado);
+                mysqli_close($conexao);
+                $_SESSION['logado'] = true;
+                $_SESSION['id_usuario'] = $dados['id'];
+                header('Location: /sistema-de-login');
+            else:
+                $erros[] = "<p class='msg-erro'>Usuario ou senha invalidos</p>";
+            endif;
+        else:
+            $erros[] = "<p class='msg-erro'>Usuario inexistente </p>";
+        endif;
 
-echo "Success: A proper connection to MySQL was made! The $dbName database is great." . PHP_EOL;
-echo "Host information: " . mysqli_get_host_info($conexao) . PHP_EOL;
+    endif;
 endif;
-
-mysqli_close($conexao);

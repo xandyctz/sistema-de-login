@@ -1,5 +1,11 @@
 <?php
-session_start();
+include('check-login.php');
+
+if(!empty($_SESSION['logado'])):
+    header('Location: /sistema-de-login');
+endif;
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,13 +30,13 @@ session_start();
             <a class="menu-primary" href="#">Contato</a>
         </nav>
         <nav class="nav respon">
+        <!-- <a class="name-login-register" title="Registrar" href="../logout.php">Sair</a> -->
+
             <?php
-            if(!empty($_SESSION)):
+            if(!empty($_SESSION['logado'])):
                 echo '<a class="name-login-register" title="Registrar" href="logout.php">Sair</a>';
-            else:
-                echo "";
             endif;
-            if(empty($_SESSION)):
+            if(empty($_SESSION['logado'])):
                 echo '<a class="name-login-register" title="Logar" href="../login/" >Login</a>';
                 echo '<a class="name-login-register" title="Registrar" href="../register/">Register</a>';
             endif;
@@ -41,12 +47,16 @@ session_start();
     </header>
 
     <main class="fbox-main">
-        <form action="check-login.php" method="POST">
+        <form action="check-login.php" method="POST" class="largura">
             <h1 class="title-form">Painel de Login</h1>
-            <input type="text" name="login" placeholder="Username" autocomplete="none" maxlength="15">
+            <input type="text" name="login" placeholder="Username" autocomplete="off" maxlength="15">
             <input type="password" name="senha" placeholder="Password" maxlength="20">
             <?php
-                echo "<p class='msg-erro'>Usuario ou senha invalidos</p>";
+               if(!empty($erros)):
+                foreach($erros as $erro):
+                    echo $erro;
+                endforeach;
+            endif;
             ?>
             <button type="submit" name="btn-entrar" class="btn-form">Entrar</button>
         </form>
