@@ -6,7 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Login</title>
+    <title>aPainel de Login</title>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Source+Sans+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
 </head>
